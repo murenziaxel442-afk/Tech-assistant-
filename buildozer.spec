@@ -14,7 +14,7 @@ requirements = python3, kivy, requests, urllib3, plyer, android
 
 # UI & Display Setup
 orientation = portrait
-fullscreen = 0
+fullscreen = 1
 
 # Android Permissions for Jervis Capabilities
 android.permissions = INTERNET, RECORD_AUDIO, MODIFY_AUDIO_SETTINGS, CAMERA, ACCESS_NETWORK_STATE, VIBRATE, WAKE_LOCK
