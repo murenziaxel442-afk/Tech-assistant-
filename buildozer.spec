@@ -1,30 +1,31 @@
 [app]
-# (str) Title of your application
+# App Details
 title = Jervis
-
-# (str) Package name
 package.name = jervisapp
-
-# (str) Package domain (needed for android/ios packaging)
 package.domain = org.ganza
 
-# (str) Source code where the main.py lives
+# Source Code Settings
 source.dir = .
+source.include_exts = py,png,jpg,kv,atlas
 
-# (list) Application requirements
-requirements = python3, kivy
+# Application Requirements
+# Added plyer (for Android system features like vibration, notifications, battery)
+requirements = python3, kivy, requests, urllib3, plyer, android
 
-# (str) Supported orientation
+# UI & Display Setup
 orientation = portrait
+fullscreen = 0
 
-# (list) Permissions
-android.permissions = RECORD_AUDIO, INTERNET
+# Android Permissions for Jervis Capabilities
+android.permissions = INTERNET, RECORD_AUDIO, MODIFY_AUDIO_SETTINGS, CAMERA, ACCESS_NETWORK_STATE, VIBRATE, WAKE_LOCK
 
-# (int) Target Android API
+# Hardware Features
+android.features = android.hardware.microphone, android.hardware.camera
+
+# Target Android API Levels
 android.api = 33
-
-# (int) Minimum API your APK will support
 android.minapi = 21
+android.ndk_api = 21
 
-# Automatically accept the Android SDK License so the build doesn't freeze
+# Automation Settings
 android.accept_sdk_license = True
