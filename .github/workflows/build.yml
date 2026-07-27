@@ -31,10 +31,19 @@ jobs:
       - name: Build APK with Buildozer
         run: |
           export PATH=$PATH:~/.local/bin
-          yes | buildozer android debug
+          # Locate directory containing buildozer.spec and run build there
+          SPEC_DIR=$(find . -name "buildozer.spec" -exec dirname {} \;)
+          if [ -n "$SPEC_DIR" ]; then
+            cd "$SPEC_DIR"
+            echo "Found buildozer.spec in $SPEC_DIR"
+            yes | buildozer android debug
+          else
+            echo "ERROR: Could not find buildozer.spec anywhere in repo!"
+            exit 1
+          fi
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: Jervis-Android-App
-          path: bin/*.apk
+          path: "**/bin/*.apk"
